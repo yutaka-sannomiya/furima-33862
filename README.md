@@ -4,7 +4,7 @@
 
 | Column             | Type                | Options                  |
 |--------------------|---------------------|--------------------------|
-| nickname           | string              | null: false, unique: true|
+| nickname           | string              | null: false              |
 | email              | string              | null: false, unique: true|
 | encrypted_password | string              | null: false              |
 | last_name          | string              | null: false              |
@@ -16,7 +16,7 @@
 ### Association
 
 * has_many :items
-* has_many :urchase_informations
+* has_many :purchase_informations
 
 ## items table
 
@@ -25,12 +25,12 @@
 | amount_ob_money                     | string     | null: false                   |
 | user                                | references | null: false, foreign_key: true|
 | description                         | text       | null: false                   |
-| category                            | string     | null: false                   |
-| status                              | string     | null: false                   |
-| shipping_charges                    | string     | null: false                   |
-| shipping_area                       | string     | null: false                   |
-| shipping_days                       | string     | null: false                   |
-| price                               | string     | null: false                   |
+| category_id                         | integer    | null: false                   |
+| status_id                           | integer    | null: false                   |
+| shipping_charges_id                 | integer    | null: false                   |
+| shipping_area_id                    | integer    | null: false                   |
+| shipping_days_id                    | integer    | null: false                   |
+| price                               | integer    | null: false                   |
 
 ### Association
 
@@ -55,7 +55,7 @@
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | postal_code                         | string     | null: false       |
-| prefectures                         | string     | null: false       |
+| shipping_area_id                    | integer    | null: false       |
 | municipalities                      | string     | null: false       |
 | address                             | string     | null: false       |
 | building                            | string     |                   |
