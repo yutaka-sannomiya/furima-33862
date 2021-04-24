@@ -23,6 +23,7 @@
 | Column                              | Type       | Options                       |
 |-------------------------------------|------------|-------------------------------|
 | amount_ob_money                     | string     | null: false                   |
+| product_name                        | string     | null: false                   |
 | user                                | references | null: false, foreign_key: true|
 | description                         | text       | null: false                   |
 | category_id                         | integer    | null: false                   |
@@ -60,7 +61,7 @@
 | address                             | string     | null: false       |
 | building                            | string     |                   |
 | tel                                 | string     | null: false       |
-| purchase_information_id             | references | foreign_key: true |
+| purchase_information                | references | foreign_key: true |
 
 ### Association
 
