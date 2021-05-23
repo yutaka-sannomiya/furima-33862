@@ -74,18 +74,23 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
-      it 'priceが300以下では登録できない' do
-        @item.price = 299
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
-      end
       it 'priceが9999999以上では登録できない' do
         @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
-      it 'priceが半角数字以外では登録できない' do
+      it 'priceが半角文字以外では登録できない' do
         @item.price = 'あAアｱa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Half-width number")
+      end
+      it 'priceが全角文字では登録できない' do
+        @item.price = 'あア'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Half-width number")
+      end
+      it 'priceが半角英語だけでは登録できない' do
+        @item.price = 'abc'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Half-width number")
       end
