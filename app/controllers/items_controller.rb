@@ -2,9 +2,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    #@items = Item.includes(:user)
     @items = Item.all
-    #@items = Item.order("created_at DESC")
+    #@items = Item.order("created_at DESC")※残しておくように指示がありました。
   end
 
   def new
