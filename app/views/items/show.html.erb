@@ -31,7 +31,8 @@
       <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
       <% end %>
 
-      <% if @items.blank? %>
+      <% if current_user.id %>
+      <% else %>
       <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
       <% end %>
 
