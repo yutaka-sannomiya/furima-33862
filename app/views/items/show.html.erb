@@ -8,12 +8,13 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
-      <%# if @items.blank? 購入機能実装後表記%>
-      <%# else 購入機能実装後表記%>
+
+      <% if @items.blank? %>
+      <% else %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
-      <%# end 購入機能実装後表記%>
+      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
