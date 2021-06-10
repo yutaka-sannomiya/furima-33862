@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
   before_action :contributor_confirmation, only: [:index, :create]
+  before_action :login, only: [:index, :create]
 
   def index
     @purchase_information_delivery = PurchaseInformationDelivery.new
@@ -31,6 +32,10 @@ class OrdersController < ApplicationController
 
   def contributor_confirmation
     redirect_to root_path if @item.purchase_information.present?
+    # redirect_to root_path if current_user.id == @item.user_id
+  end
+
+  def login
     redirect_to root_path if current_user.id == @item.user_id
   end
 
