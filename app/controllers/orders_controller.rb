@@ -2,11 +2,10 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
   before_action :contributor_confirmation
-  before_action :login
 
   def index
     @purchase_information_delivery = PurchaseInformationDelivery.new
-    
+
   end
 
 
@@ -32,11 +31,7 @@ class OrdersController < ApplicationController
   end
 
   def contributor_confirmation
-    redirect_to root_path if @item.purchase_information.present?
-  end
-
-  def login
-    redirect_to root_path if current_user.id == @item.user_id
+    redirect_to root_path if current_user.id == @item.user_id || @item.purchase_information.present?
   end
 
   def pay_item
