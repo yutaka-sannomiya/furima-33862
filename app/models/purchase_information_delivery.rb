@@ -6,7 +6,6 @@ class PurchaseInformationDelivery
     validates :token
     validates :user_id
     validates :item_id
-    validates :postal_code
     validates :municipalities
     validates :address
     validates :tel, format: {with: /\A[0-9]{10,11}\z/, message: 'is invalid, Half-width number'}
