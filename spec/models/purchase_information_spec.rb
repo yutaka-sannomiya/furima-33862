@@ -63,6 +63,12 @@ RSpec.describe PurchaseInformation, type: :model do
         expect(@purchase_information_delivery.errors.full_messages).to include("Tel is invalid, Half-width number")
       end
 
+      it 'telが半角数字以外が混じっていると保存できないこと' do
+        @purchase_information_delivery.tel = 'aaa12341234'
+        @purchase_information_delivery.valid?
+        expect(@purchase_information_delivery.errors.full_messages).to include("Tel is invalid, Half-width number")
+      end
+
       it 'user_idが空だと保存できないこと' do
         @purchase_information_delivery.user_id = ''
         @purchase_information_delivery.valid?
