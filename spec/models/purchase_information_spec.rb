@@ -57,6 +57,24 @@ RSpec.describe PurchaseInformation, type: :model do
         expect(@purchase_information_delivery.errors.full_messages).to include("Tel can't be blank")
       end
 
+      it 'telが11桁以上だとだと保存できないこと' do
+        @purchase_information_delivery.tel = '0901234123456'
+        @purchase_information_delivery.valid?
+        expect(@purchase_information_delivery.errors.full_messages).to include("Tel is invalid, Half-width number")
+      end
+
+      it 'user_idが空だと保存できないこと' do
+        @purchase_information_delivery.user_id = ''
+        @purchase_information_delivery.valid?
+        expect(@purchase_information_delivery.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空だと保存できないこと' do
+        @purchase_information_delivery.item_id = ''
+        @purchase_information_delivery.valid?
+        expect(@purchase_information_delivery.errors.full_messages).to include("Item can't be blank")
+      end
+
     end
   end
 end

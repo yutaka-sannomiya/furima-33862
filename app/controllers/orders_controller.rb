@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   private
 
   def purchase_information_delivery_params
-    params.permit(:postal_code, :shipping_area_id, :municipalities, :address, :building, :tel, :purchase_information).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.permit(:postal_code, :shipping_area_id, :municipalities, :address, :building, :tel).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def set_item
@@ -32,7 +32,6 @@ class OrdersController < ApplicationController
 
   def contributor_confirmation
     redirect_to root_path if @item.purchase_information.present?
-    # redirect_to root_path if current_user.id == @item.user_id
   end
 
   def login
